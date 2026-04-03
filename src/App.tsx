@@ -16,6 +16,10 @@ import OsintApis from './components/OsintApis';
 import AdvancedSearchOperators from './components/AdvancedSearchOperators';
 import OSINTSearch from './components/OSINTSearch';
 import CAPAlerts from './components/CAPAlerts';
+import OsintDashboard from './components/OsintDashboard';
+import RemoteSensing from './components/RemoteSensing';
+import WarAtNight from './components/WarAtNight';
+import AdvancedOsint from './components/AdvancedOsint';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('osm');
@@ -36,6 +40,10 @@ export default function App() {
         {activeTab === 'operators' && <AdvancedSearchOperators />}
         {activeTab === 'cse' && <OSINTSearch />}
         {activeTab === 'cap' && <CAPAlerts />}
+        {activeTab === 'dashboard' && <OsintDashboard />}
+        {activeTab === 'rs' && <RemoteSensing />}
+        {activeTab === 'waratnight' && <WarAtNight />}
+        {activeTab === 'advanced' && <AdvancedOsint />}
       </main>
     </div>
   );

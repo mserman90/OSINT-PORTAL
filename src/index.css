@@ -23,10 +23,34 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
+  
+  .thin-scrollbar::-webkit-scrollbar {
+    height: 4px;
+    width: 4px;
+  }
+  .thin-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .thin-scrollbar::-webkit-scrollbar-thumb {
+    background-color: #cbd5e1;
+    border-radius: 20px;
+  }
+  .dark .thin-scrollbar::-webkit-scrollbar-thumb {
+    background-color: #45475a;
+  }
+  .thin-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: #cbd5e1 transparent;
+  }
+  .dark .thin-scrollbar {
+    scrollbar-color: #45475a transparent;
+  }
 }
 
 /* Leaflet dark/light mode overrides */
 .leaflet-container {
+  height: 100%;
+  width: 100%;
   @apply !bg-gray-100 dark:!bg-[#11111b];
 }
 

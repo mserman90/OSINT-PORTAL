@@ -1,4 +1,4 @@
-import { Search, MapPin, Lightbulb, Clock, Mail, Image as ImageIcon, Database, Server, Terminal, Sun, Moon, Binoculars, AlertTriangle } from 'lucide-react';
+import { Search, MapPin, Lightbulb, Clock, Mail, Image as ImageIcon, Database, Server, Terminal, Sun, Moon, Binoculars, AlertTriangle, Activity, Satellite, Zap, Target } from 'lucide-react';
 import { motion } from 'motion/react';
 import { useState, useEffect } from 'react';
 
@@ -19,20 +19,23 @@ const tabs = [
   { id: 'operators', label: 'Search Operators', icon: Terminal },
   { id: 'cse', label: 'OSINT Search', icon: Binoculars },
   { id: 'cap', label: 'Emergency Alerts', icon: AlertTriangle },
+  { id: 'dashboard', label: 'OSINT Dashboard', icon: Activity },
+  { id: 'rs', label: 'Remote Sensing', icon: Satellite },
+  { id: 'waratnight', label: 'War at Night', icon: Zap },
+  { id: 'advanced', label: 'Advanced OSINT', icon: Target },
 ];
 
 export default function Navbar({ activeTab, setActiveTab }: NavbarProps) {
-  const [isDark, setIsDark] = useState(true);
+  const [isDark, setIsDark] = useState(false);
 
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    if (savedTheme === 'light' || (!savedTheme && !prefersDark)) {
-      setIsDark(false);
-      document.documentElement.classList.remove('dark');
-    } else {
+    if (savedTheme === 'dark') {
       setIsDark(true);
       document.documentElement.classList.add('dark');
+    } else {
+      setIsDark(false);
+      document.documentElement.classList.remove('dark');
     }
   }, []);
 
@@ -52,7 +55,7 @@ export default function Navbar({ activeTab, setActiveTab }: NavbarProps) {
       <div className="text-blue-600 dark:text-[#89b4fa] font-bold text-lg mr-8 tracking-wider hidden md:block shrink-0">
         OSINT PORTAL
       </div>
-      <div className="flex gap-1 h-full overflow-x-auto no-scrollbar flex-1">
+      <div className="flex gap-1 h-full overflow-x-auto thin-scrollbar flex-1 pb-1 items-center">
         {tabs.map((tab) => {
           const Icon = tab.icon;
           const isActive = activeTab === tab.id;
@@ -60,12 +63,12 @@ export default function Navbar({ activeTab, setActiveTab }: NavbarProps) {
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`flex items-center gap-2 px-4 h-full text-sm font-semibold transition-all relative whitespace-nowrap ${
+              title={tab.label}
+              className={`flex items-center justify-center px-4 h-full py-4 transition-all relative shrink-0 ${
                 isActive ? 'text-blue-600 dark:text-[#89b4fa]' : 'text-gray-600 dark:text-[#a6adc8] hover:text-gray-900 dark:hover:text-[#cdd6f4]'
               }`}
             >
-              <Icon size={16} />
-              {tab.label}
+              <Icon size={20} />
               {isActive && (
                 <motion.div
                   layoutId="activeTab"
