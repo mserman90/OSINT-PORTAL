@@ -1,0 +1,39 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  html, body, #root {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    @apply bg-gray-50 dark:bg-[#0d0d1a] text-gray-900 dark:text-[#cdd6f4];
+  }
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* Leaflet dark/light mode overrides */
+.leaflet-container {
+  @apply !bg-gray-100 dark:!bg-[#11111b];
+}
+
+.leaflet-popup-content-wrapper, .leaflet-popup-tip {
+  @apply !bg-white dark:!bg-[#1e1e2e] !text-gray-900 dark:!text-[#cdd6f4] !border !border-gray-200 dark:!border-[#313244];
+}
+
+.leaflet-control-zoom-in, .leaflet-control-zoom-out {
+  @apply !bg-white dark:!bg-[#1e1e2e] !text-gray-900 dark:!text-[#cdd6f4] !border !border-gray-200 dark:!border-[#313244];
+}

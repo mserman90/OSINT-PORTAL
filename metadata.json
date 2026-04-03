@@ -1,0 +1,7 @@
+{
+  "name": "OSINT Portal AI",
+  "description": "Advanced Open Source Intelligence portal featuring AI-powered geolocation, OSM searching, and chronolocation analysis.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
